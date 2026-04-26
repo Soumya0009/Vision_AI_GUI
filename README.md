@@ -207,14 +207,3 @@ Email: [soumyaranjanmohanty0009@gmail.com](mailto:soumyaranjanmohanty0009@gmail.
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-If you want next improvements, I can help you:
-
-* Add **versioning (e.g., VisionAI v1.0.0) inside UI**
-* Create **professional login UI + JWT integration**
-* Build **backend (Flask/FastAPI) for your AI model**
-* Prepare **resume-ready project explanation**
-
-Just tell me what you want to enhance next.
