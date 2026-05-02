@@ -6,6 +6,9 @@
   transition: transform 0.3s ease;
 }
 
+.sidebar .nav-link {
+  width: 100%;
+}
 /* Active nav item */
 .active-item {
   background-color: #e7f1ff;

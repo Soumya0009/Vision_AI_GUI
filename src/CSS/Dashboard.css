@@ -1,0 +1,534 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─────────────────────────────────────────────────────────
+   GLOBAL RESET
+───────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent outer page scrollbar */
+  font-family: 'DM Sans', sans-serif;
+  background: #f8fafc;
+}
+
+/* ─────────────────────────────────────────────────────────
+   APP LAYOUT
+───────────────────────────────────────────────────────── */
+.app-container,
+.main-layout,
+.dashboard-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SIDEBAR
+───────────────────────────────────────────────────────── */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+
+  position: sticky;
+  top: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+}
+
+/* Sidebar Scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   MAIN DASHBOARD WRAPPER
+───────────────────────────────────────────────────────── */
+.dashboard-wrapper {
+  flex: 1;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  /* IMPORTANT: remove top gap */
+  padding: 0 !important;
+  margin: 0 !important;
+
+  background: linear-gradient(
+    135deg,
+    #eef2ff 0%,
+    #f8fafc 45%,
+    #f3f4f6 100%
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+   DASHBOARD MAIN CARD
+───────────────────────────────────────────────────────── */
+.dashboard-main-card {
+  width: 100%;
+  max-width: 1650px;
+  height: 100vh;
+
+  position: relative;
+  top: 0;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+
+  /* FULL TOP ATTACHED */
+  border-radius: 0 !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DASHBOARD INTERNAL SCROLL
+───────────────────────────────────────────────────────── */
+.dashboard-scrollable {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Custom Scrollbars */
+.dashboard-scrollable::-webkit-scrollbar,
+.activity-scroll::-webkit-scrollbar,
+.table-scroll::-webkit-scrollbar,
+.uploads-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-scrollable::-webkit-scrollbar-track,
+.activity-scroll::-webkit-scrollbar-track,
+.table-scroll::-webkit-scrollbar-track,
+.uploads-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-scrollable::-webkit-scrollbar-thumb,
+.activity-scroll::-webkit-scrollbar-thumb,
+.table-scroll::-webkit-scrollbar-thumb,
+.uploads-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+  border-radius: 999px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DASHBOARD CONTENT ROOT
+───────────────────────────────────────────────────────── */
+.dashboard-root {
+  min-height: auto;
+  padding: 18px 28px 28px 28px !important;
+  color: #111827;
+  background: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────
+   STAT CARDS
+───────────────────────────────────────────────────────── */
+.stat-card {
+  border-radius: 18px !important;
+  background: #ffffff;
+  border: 1px solid #f1f5f9 !important;
+
+  transition: all 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.12) !important;
+}
+
+.stat-value {
+  font-size: 1.85rem;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  color: #111827;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION CARDS
+───────────────────────────────────────────────────────── */
+.section-card {
+  border-radius: 18px !important;
+  border: 1px solid #f1f5f9 !important;
+  background: #ffffff !important;
+
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05) !important;
+
+  transition: all 0.25s ease;
+}
+
+.section-card:hover {
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.08) !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TITLES
+───────────────────────────────────────────────────────── */
+.section-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.2px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   RECENT UPLOADS
+───────────────────────────────────────────────────────── */
+.uploads-scroll {
+  max-height: 340px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+
+.upload-thumb {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.upload-thumb:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.upload-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.35s ease;
+}
+
+.upload-thumb:hover img {
+  transform: scale(1.06);
+}
+
+.thumb-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  background: rgba(15, 23, 42, 0.7);
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  padding: 3px 8px;
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(6px);
+}
+
+.thumb-label {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #ffffff;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ─────────────────────────────────────────────────────────
+   RECENT ACTIVITY
+───────────────────────────────────────────────────────── */
+.activity-scroll {
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TOP PREDICTIONS
+───────────────────────────────────────────────────────── */
+.table-scroll {
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.pred-table {
+  min-width: 100%;
+}
+
+.pred-table th {
+  font-size: 11.5px;
+  font-weight: 700;
+
+  color: #64748b;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  padding-bottom: 12px;
+
+  border: none;
+
+  position: sticky;
+  top: 0;
+
+  background: #ffffff;
+
+  z-index: 2;
+}
+
+.pred-table td {
+  font-size: 13.5px;
+
+  padding: 12px 0;
+
+  border: none;
+  border-bottom: 1px solid #f1f5f9;
+
+  vertical-align: middle;
+
+  color: #334155;
+}
+
+.pred-table tr:hover td {
+  background: #f8fafc;
+}
+
+.pred-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pred-bar {
+  height: 7px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+
+  transition: width 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+.total-row td {
+  font-weight: 700;
+  font-size: 14px;
+
+  border-top: 2px solid #e2e8f0 !important;
+
+  padding-top: 16px !important;
+
+  color: #111827;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BADGES / LINKS
+───────────────────────────────────────────────────────── */
+.live-badge {
+  font-size: 11px;
+  font-weight: 700;
+
+  padding: 4px 12px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+
+  color: #166534;
+}
+
+.view-all-link {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #4f46e5;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.view-all-link:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────
+   INPUTS
+───────────────────────────────────────────────────────── */
+.range-select,
+.date-chip {
+  border: 1px solid #e2e8f0;
+
+  border-radius: 10px;
+
+  padding: 6px 12px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  background: #ffffff;
+
+  color: #334155;
+
+  cursor: pointer;
+
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+
+.range-select:hover,
+.date-chip:hover {
+  border-color: #6366f1;
+}
+
+/* ─────────────────────────────────────────────────────────
+   REMOVE PARENT CONTAINER SPACING
+───────────────────────────────────────────────────────── */
+.main-content,
+.content-area,
+.page-content,
+.dashboard-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .dashboard-root {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  html,
+  body,
+  #root {
+    overflow: auto;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+
+  .dashboard-wrapper {
+    height: auto;
+    padding: 0 !important;
+    overflow: visible;
+  }
+
+  .dashboard-main-card {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .dashboard-scrollable {
+    height: auto;
+    overflow: visible;
+  }
+
+  .dashboard-root {
+    padding: 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-root {
+    padding: 16px !important;
+  }
+
+  .activity-scroll,
+  .table-scroll,
+  .uploads-scroll {
+    max-height: 260px;
+  }
+
+  .stat-value {
+    font-size: 1.55rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-root {
+    padding: 14px !important;
+  }
+
+  .section-title {
+    font-size: 0.95rem;
+  }
+
+  .pred-table td,
+  .pred-table th {
+    font-size: 12px;
+  }
+}
